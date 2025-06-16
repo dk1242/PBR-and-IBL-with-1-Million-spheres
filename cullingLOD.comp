@@ -1,0 +1,121 @@
+#version 430
+
+layout(local_size_x = 256) in; // Number of threads per workgroup
+
+// Input buffer: all instances before culling 
+layout(std430, binding = 0) buffer InstancePositionsData {
+    vec3 instancePositions[];
+};
+layout(std430, binding = 1) buffer InstanceColorsData {
+    vec3 instanceColors[];
+};
+layout(std430, binding = 2) buffer InstanceMaterialPropsData {
+    vec2 instanceMaterialProperties[];
+};
+
+// High LOD buffers
+layout(std430, binding = 3) buffer HighLodPositions {
+    vec3 highPositions[];
+};
+layout(std430, binding = 4) buffer HighLodColors {
+    vec3 highColors[];
+};
+layout(std430, binding = 5) buffer HighLodMaterialProps {
+    vec2 highMaterialProps[];
+};
+
+// Medium LOD buffers
+layout(std430, binding = 6) buffer MediumLodPositions {
+    vec3 mediumPositions[];
+};
+layout(std430, binding = 7) buffer MediumLodColors {
+    vec3 mediumColors[];
+};
+layout(std430, binding = 8) buffer MediumLodMaterialProps {
+    vec2 mediumMaterialProps[];
+};
+
+// Low LOD buffers
+layout(std430, binding = 9) buffer LowLodPositions {
+    vec3 lowPositions[];
+};
+layout(std430, binding = 10) buffer LowLodColors {
+    vec3 lowColors[];
+};
+layout(std430, binding = 11) buffer LowLodMaterialProps {
+    vec2 lowMaterialProps[];
+};
+
+//layout(std430, binding = 12) buffer DebugBuffer {
+//    vec3 debugPositions;
+//};
+
+// Atomic counter: 
+layout(binding = 0) uniform atomic_uint highLodCount;
+layout(binding = 1) uniform atomic_uint mediumLodCount;
+layout(binding = 2) uniform atomic_uint lowLodCount;
+
+// uniform for camera position
+uniform vec3 cameraPosition;
+
+// Uniforms for frustum bounds
+uniform float left;   // Left plane
+uniform float right;  // Right plane
+uniform float bottom; // Bottom plane
+uniform float top;    // Top plane
+uniform float near;   // Near plane
+uniform float far;    // Far plane
+
+uniform uint totalInstances; // Total number of instances
+
+void main() {
+    uint index = gl_GlobalInvocationID.x;
+
+    if (index >= totalInstances) {
+        return; // Out of bounds
+    }
+
+    vec3 position = instancePositions[index];
+    vec3 color = instanceColors[index];
+    vec2 material = instanceMaterialProperties[index];
+
+    // Orthographic frustum culling
+    if (position.x >= left && position.x <= right && position.y >= bottom && position.y <= top && position.z <= near && position.z >= far) {
+        
+        // manually calculating squared distance to avoid sqrt()
+        highp float distanceSqrd = ((cameraPosition.x - position.x) * (cameraPosition.x - position.x))
+            + ((cameraPosition.y - position.y) * (cameraPosition.y - position.y))
+            + ((cameraPosition.z - position.z) * (cameraPosition.z - position.z));
+    
+        if(position == vec3(0.0)){
+            return;
+        }
+        // LOD selection
+        if (distanceSqrd <= 2500.0) {
+            uint visibleIndex = 0;
+            visibleIndex = atomicCounterIncrement(highLodCount);
+
+            highPositions[visibleIndex] = position;
+            highColors[visibleIndex] = color;
+            highMaterialProps[visibleIndex] = material;
+            
+            //debugPositions[0]=visibleIndex;
+        }else if (distanceSqrd > 2500.0f && distanceSqrd <= 10000.0) {
+            uint visibleIndex = atomicCounterIncrement(mediumLodCount);
+            
+            mediumPositions[visibleIndex] = position;
+            mediumColors[visibleIndex] = color;
+            mediumMaterialProps[visibleIndex] = material;
+            
+            //debugPositions[1]=visibleIndex;
+        }else{
+            uint visibleIndex = atomicCounterIncrement(lowLodCount);
+            
+            lowPositions[visibleIndex] = position;
+            lowColors[visibleIndex] = color;
+            lowMaterialProps[visibleIndex] = material;
+            
+            //debugPositions[2]=visibleIndex;
+        }
+    }   
+}

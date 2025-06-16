@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Resource Files\Shaders">
+      <UniqueIdentifier>{cc19fb65-ae4c-46b7-90bf-96070a64265d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\textures">
+      <UniqueIdentifier>{78f029c2-f3ef-4f68-a281-8fddd9625935}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\textures\skybox">
+      <UniqueIdentifier>{b67d963c-27ce-4aae-b259-a58b9bcb81f3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="glad.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VBO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VAO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EBO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InstanceVBO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stb.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureUtilities.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SSBO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ACBO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="VBO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VAO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EBO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InstanceVBO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureUtilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SSBO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ACBO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="sphere.vert">
+      <Filter>Resource Files\Shaders</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sphere.frag">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="skymap.vert">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="skymap.frag">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="sphere_pbr.frag">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="textures\night.hdr">
+      <Filter>Resource Files\textures</Filter>
+    </None>
+    <None Include="cubemapShader.vert">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="cubemapShader.frag">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="irradianceShader.vert">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="irradianceShader.frag">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="prefilterShader.vert">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="prefilterShader.frag">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="brdfShader.vert">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="brdfShader.frag">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="textures\parking.hdr">
+      <Filter>Resource Files\textures</Filter>
+    </None>
+    <None Include="cullingLOD.comp">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\skybox\skybox\back.jpg">
+      <Filter>Resource Files\textures\skybox</Filter>
+    </Image>
+    <Image Include="..\skybox\skybox\bottom.jpg">
+      <Filter>Resource Files\textures\skybox</Filter>
+    </Image>
+    <Image Include="..\skybox\skybox\front.jpg">
+      <Filter>Resource Files\textures\skybox</Filter>
+    </Image>
+    <Image Include="..\skybox\skybox\left.jpg">
+      <Filter>Resource Files\textures\skybox</Filter>
+    </Image>
+    <Image Include="..\skybox\skybox\right.jpg">
+      <Filter>Resource Files\textures\skybox</Filter>
+    </Image>
+    <Image Include="..\skybox\skybox\top.jpg">
+      <Filter>Resource Files\textures\skybox</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
