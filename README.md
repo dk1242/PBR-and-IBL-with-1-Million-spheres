@@ -66,5 +66,6 @@ I implemented Physically Based Rendering (PBR) and Image-Based Lighting (IBL) to
 ## Acknowledgments
 
 I learned and cleared my basics from [learnopengl.com](https://learnopengl.com/) and [FreeCodeCamp video](https://youtu.be/45MIykWJ-C4?si=uBAfGH4kaYC-CwCn) on openGL. 
-For PBR and IBL too, I learned it from [learnopengl.com](https://learnopengl.com/) and undertood it completely with chatgpt.com .
+
+For PBR and IBL too, I learned it from [learnopengl.com](https://learnopengl.com/) and understood it completely with chatgpt.com .
 ---
